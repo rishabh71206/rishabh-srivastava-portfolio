@@ -443,6 +443,83 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+}
+
+.hero > :not(.particles) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated particle constellation behind the hero */
+.particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Split-heading letter animation */
+.js .section-head h2 .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  will-change: transform, opacity;
+}
+
+.js .section-head.in h2 .char {
+  animation: char-in 0.65s var(--ease) forwards;
+  animation-delay: calc(var(--i) * 22ms);
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@keyframes char-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Pointer spotlight on cards */
+.feature-grid article,
+.skills li,
+.project.compact,
+.timeline li {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.feature-grid article::before,
+.skills li::before,
+.project.compact::before,
+.timeline li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    transparent 68%
+  );
+  transition: opacity 0.35s ease;
+}
+
+.feature-grid article:hover::before,
+.skills li:hover::before,
+.project.compact:hover::before,
+.timeline li:hover::before {
+  opacity: 1;
 }
 
 /* ---------- Hero ---------- */
@@ -1202,6 +1279,16 @@ footer a:hover {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .js .section-head h2 .char {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .particles {
+    display: none;
   }
 
   .hero-title .line span,

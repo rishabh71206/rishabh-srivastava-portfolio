@@ -321,6 +321,213 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Split section headings into animated letters                        */
+  /* ------------------------------------------------------------------ */
+  if (!prefersReducedMotion.matches) {
+    document.querySelectorAll(".section-head h2").forEach((heading) => {
+      const words = heading.textContent.trim().split(/\s+/);
+      const fragment = document.createDocumentFragment();
+      let index = 0;
+
+      words.forEach((word, wordIndex) => {
+        const wordEl = document.createElement("span");
+        wordEl.className = "word";
+
+        [...word].forEach((character) => {
+          const charEl = document.createElement("span");
+          charEl.className = "char";
+          charEl.style.setProperty("--i", String(index));
+          charEl.textContent = character;
+          wordEl.appendChild(charEl);
+          index += 1;
+        });
+
+        fragment.appendChild(wordEl);
+        if (wordIndex < words.length - 1) fragment.appendChild(document.createTextNode(" "));
+      });
+
+      heading.textContent = "";
+      heading.appendChild(fragment);
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Pointer spotlight on cards                                          */
+  /* ------------------------------------------------------------------ */
+  if (finePointer.matches && !prefersReducedMotion.matches) {
+    document
+      .querySelectorAll(".feature-grid article, .skills li, .project.compact, .timeline li")
+      .forEach((card) => {
+        card.addEventListener(
+          "pointermove",
+          (event) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+            card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+          },
+          { passive: true }
+        );
+      });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Hero particle constellation                                         */
+  /* ------------------------------------------------------------------ */
+  const canvas = document.querySelector(".particles");
+  const hero = document.querySelector(".hero");
+
+  if (canvas && hero && !prefersReducedMotion.matches) {
+    const ctx = canvas.getContext("2d");
+    const nodes = [];
+    const pointer = { x: -9999, y: -9999 };
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let visible = true;
+
+    const palette = () => {
+      const styles = getComputedStyle(document.documentElement);
+      return {
+        dot: styles.getPropertyValue("--accent").trim() || "#d8b36a",
+        line: styles.getPropertyValue("--accent-2").trim() || "#6f9e8a",
+      };
+    };
+
+    const seed = () => {
+      const count = Math.max(26, Math.min(72, Math.round((width * height) / 20000)));
+      nodes.length = 0;
+
+      for (let i = 0; i < count; i += 1) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.32,
+          vy: (Math.random() - 0.5) * 0.32,
+          r: Math.random() * 1.5 + 0.6,
+        });
+      }
+    };
+
+    const resize = () => {
+      const rect = hero.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      width = rect.width;
+      height = rect.height;
+
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+      const { dot, line } = palette();
+
+      nodes.forEach((node) => {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < -20) node.x = width + 20;
+        if (node.x > width + 20) node.x = -20;
+        if (node.y < -20) node.y = height + 20;
+        if (node.y > height + 20) node.y = -20;
+
+        const dx = node.x - pointer.x;
+        const dy = node.y - pointer.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < 150 && distance > 0.01) {
+          node.x += (dx / distance) * 0.7;
+          node.y += (dy / distance) * 0.7;
+        }
+
+        ctx.globalAlpha = 0.55;
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.strokeStyle = line;
+      ctx.lineWidth = 1;
+
+      for (let i = 0; i < nodes.length; i += 1) {
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const distance = Math.hypot(a.x - b.x, a.y - b.y);
+
+          if (distance < 130) {
+            ctx.globalAlpha = (1 - distance / 130) * 0.26;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      frame = requestAnimationFrame(draw);
+    };
+
+    const start = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(draw);
+    };
+
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    resize();
+    start();
+
+    window.addEventListener("resize", () => {
+      resize();
+    });
+
+    hero.addEventListener(
+      "pointermove",
+      (event) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+      },
+      { passive: true }
+    );
+
+    hero.addEventListener("pointerleave", () => {
+      pointer.x = -9999;
+      pointer.y = -9999;
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            visible = entry.isIntersecting;
+            if (visible) start();
+            else stop();
+          });
+        },
+        { threshold: 0 }
+      ).observe(hero);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else if (visible) start();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Copy email to clipboard                                             */
   /* ------------------------------------------------------------------ */
   const copyButtons = document.querySelectorAll("[data-copy-email]");
