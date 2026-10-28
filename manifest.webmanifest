@@ -1,0 +1,23 @@
+{
+  "name": "Rishabh Srivastava — Portfolio",
+  "short_name": "RS Portfolio",
+  "description": "Portfolio of Rishabh Srivastava — Python developer building AI tools for careers, resumes, and interviews.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0c0a",
+  "theme_color": "#0b0c0a",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/avatar.jpg",
+      "sizes": "420x420",
+      "type": "image/jpeg"
+    }
+  ]
+}
