@@ -17,9 +17,11 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <div class="cursor" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
     <div class="orb orb-a" aria-hidden="true"></div>
     <div class="orb orb-b" aria-hidden="true"></div>
+    <div class="orb orb-c" aria-hidden="true"></div>
 
     <header class="nav">
       <a class="logo" href="#top">RS</a>
@@ -34,72 +36,115 @@
 
     <main id="top">
       <section class="hero">
-        <p class="eyebrow">
+        <p class="eyebrow reveal">
           <span class="dot"></span>
           Available for internships &amp; collaborations
         </p>
-        <h1>
-          Rishabh<br />
-          <em>Srivastava</em>
+        <h1 class="hero-title">
+          <span class="line"><span>Rishabh</span></span>
+          <span class="line"><em>Srivastava</em></span>
         </h1>
-        <p class="lede">
-          I build practical AI products in Python — tools that read a resume,
-          score it against ATS rules, and coach you through a mock interview.
+        <p class="lede reveal delay-2">
+          Python developer building career-tech with Gemini AI — resume scoring,
+          mock interviews, skill-gap roadmaps, and reports people can actually use.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions reveal delay-3">
           <a class="btn primary" href="#work">See featured work</a>
           <a class="btn ghost" href="https://github.com/rishabh71206" target="_blank" rel="noopener">
             github.com/rishabh71206
           </a>
         </div>
-        <div class="hero-meta">
-          <img src="assets/avatar.jpg" alt="Rishabh Srivastava" />
+        <div class="stats reveal delay-4">
           <div>
-            <strong>Python · Gemini AI · Streamlit</strong>
-            <span>Building career-tech with real, usable interfaces.</span>
+            <strong data-count="2">0</strong>
+            <span>Public GitHub repos</span>
+          </div>
+          <div>
+            <strong data-count="8">0</strong>
+            <span>Analyzer product modules</span>
+          </div>
+          <div>
+            <strong>Python</strong>
+            <span>Primary language · Gemini · Streamlit</span>
+          </div>
+        </div>
+        <div class="hero-meta reveal delay-5">
+          <img src="assets/avatar.jpg" alt="Rishabh Srivastava GitHub avatar" />
+          <div>
+            <strong>Rishabh Srivastava</strong>
+            <span>Python · Gemini AI · Streamlit · C</span>
           </div>
         </div>
       </section>
 
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Python</span><span>Gemini AI</span><span>Streamlit</span><span>ATS Scoring</span>
+          <span>Interview Bot</span><span>PDF Parsing</span><span>Career Advisor</span><span>C</span>
+          <span>Python</span><span>Gemini AI</span><span>Streamlit</span><span>ATS Scoring</span>
+          <span>Interview Bot</span><span>PDF Parsing</span><span>Career Advisor</span><span>C</span>
+        </div>
+      </div>
+
       <section id="about" class="section">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="kicker">01 — About</p>
-          <h2>A builder who ships working AI apps, not just notebooks.</h2>
+          <h2>I ship working AI apps, not just notebooks.</h2>
         </div>
         <div class="about-grid">
-          <p>
-            I’m Rishabh Srivastava. I write Python to solve problems people
-            actually open: resume scoring, interview practice, career roadmaps,
-            and document parsing. My public work lives on
+          <p class="reveal">
+            I’m Rishabh Srivastava. I write Python for problems people open on a
+            weekday: scoring a resume against ATS rules, running a mock interview,
+            mapping a skill gap, and turning that into a PDF they can keep.
+            Public work lives on
             <a href="https://github.com/rishabh71206" target="_blank" rel="noopener">GitHub @rishabh71206</a>.
           </p>
-          <p>
-            The stack I reach for is Python, Streamlit, and Google Gemini — plus
-            C when I want to stay close to systems. I care about clean structure,
-            readable reports, and features you can click on today.
+          <p class="reveal delay-1">
+            I like a small, honest stack: Python for logic, Google Gemini for
+            language, Streamlit for a live UI, and C when I want to stay close
+            to systems. Structure matters to me — parsers, scorers, and pages
+            that stay readable after the demo.
           </p>
         </div>
+        <ol class="timeline">
+          <li class="reveal">
+            <span>Sep 2026</span>
+            <strong>Started on GitHub</strong>
+            <p>Created @rishabh71206 and shipped TestProject in C while learning repos, commits, and compiled builds.</p>
+          </li>
+          <li class="reveal delay-1">
+            <span>Oct 2026</span>
+            <strong>Smart AI Resume Analyzer</strong>
+            <p>Shipped an 8-module career suite with Gemini, document parsing, charts, and a public Streamlit demo.</p>
+          </li>
+          <li class="reveal delay-2">
+            <span>Now</span>
+            <strong>Looking for the next build</strong>
+            <p>Open to internships and collaborators who want useful AI products with a real interface.</p>
+          </li>
+        </ol>
       </section>
 
       <section id="work" class="section">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="kicker">02 — Selected work</p>
-          <h2>Projects from GitHub.</h2>
+          <h2>Projects from GitHub, with the details that matter.</h2>
         </div>
 
-        <article class="project featured">
+        <article class="project featured reveal">
           <div class="project-copy">
             <p class="tag">Featured · Python · Live</p>
             <h3>Smart AI Resume Analyzer</h3>
             <p>
-              An AI career suite: ATS resume scoring, mock interview bot,
-              skill-gap career advisor, job matching, side-by-side resume
-              comparison, an AI resume builder, and downloadable PDF reports.
+              A full career workstation: upload a resume, get an ATS score,
+              talk to an interview bot, compare two CVs, and download a report.
+              Built with Python 3.11, Streamlit, and Google Gemini.
             </p>
             <ul>
-              <li>Gemini AI for analysis, questions, and coaching</li>
-              <li>Parses PDF, DOCX, and TXT</li>
-              <li>Streamlit UI with dark / light mode</li>
+              <li>Parses PDF, DOCX, and TXT with PyPDF2 and python-docx</li>
+              <li>Gemini for scoring, questions, coaching, and job match</li>
+              <li>Plotly charts and fpdf2 PDF export</li>
+              <li>Dark / light theme on a public Streamlit Cloud app</li>
             </ul>
             <div class="hero-actions">
               <a
@@ -126,24 +171,40 @@
               </div>
               <div class="window-body">
                 <p class="mono">ATS score</p>
-                <div class="meter"><i style="--w: 86%"></i></div>
-                <p class="score">86 / 100</p>
+                <div class="meter"><i data-meter="86"></i></div>
+                <p class="score"><span data-count="86">0</span> / 100</p>
                 <p class="mono muted">Interview bot · Career advisor · PDF report</p>
                 <div class="chips">
                   <span>Python</span>
                   <span>Streamlit</span>
                   <span>Gemini</span>
                   <span>Plotly</span>
+                  <span>pandas</span>
                 </div>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="project compact">
+        <div class="feature-grid">
+          <article class="reveal"><h4>Resume Analyzer</h4><p>AI scoring plus ATS checks so the file survives recruiter filters.</p></article>
+          <article class="reveal delay-1"><h4>Interview Bot</h4><p>Generated questions and evaluation for a mock round you can actually practice.</p></article>
+          <article class="reveal delay-2"><h4>Career Advisor</h4><p>Personalized roadmap and skill-gap analysis from the same resume.</p></article>
+          <article class="reveal"><h4>AI Chatbot</h4><p>Ask follow-up questions about strengths, gaps, and wording.</p></article>
+          <article class="reveal delay-1"><h4>Job Recommendations</h4><p>Gemini suggests roles that match the parsed profile.</p></article>
+          <article class="reveal delay-2"><h4>Resume Comparison</h4><p>Place two resumes side by side and see who reads stronger.</p></article>
+          <article class="reveal"><h4>Resume Builder</h4><p>Draft a cleaner professional resume with AI assistance.</p></article>
+          <article class="reveal delay-1"><h4>PDF Report</h4><p>Export the analysis so it leaves the browser with you.</p></article>
+        </div>
+
+        <article class="project compact reveal">
           <p class="tag">Systems · C</p>
           <h3>TestProject</h3>
-          <p>Early C experiments while getting comfortable with GitHub and compiled languages.</p>
+          <p>
+            First public C repository on this account — small compiled experiments
+            while learning GitHub, source control, and how a C project is laid out.
+            It sits beside the AI work as proof I will also go low-level.
+          </p>
           <a class="text-link" href="https://github.com/rishabh71206/TestProject" target="_blank" rel="noopener">
             View repository →
           </a>
@@ -151,30 +212,68 @@
       </section>
 
       <section id="skills" class="section">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="kicker">03 — Skills</p>
-          <h2>What I use to ship.</h2>
+          <h2>Tools I use to get a product in front of someone.</h2>
         </div>
         <ul class="skills">
-          <li><strong>Python</strong> Core language for AI products and data flows.</li>
-          <li><strong>Google Gemini</strong> Resume scoring, interview Q&amp;A, career advice.</li>
-          <li><strong>Streamlit</strong> Fast, public web apps with real users.</li>
-          <li><strong>Document parsing</strong> PDF, DOCX, TXT with PyPDF2 and python-docx.</li>
-          <li><strong>C</strong> Fundamentals and low-level problem solving.</li>
-          <li><strong>HTML · CSS · JS</strong> This site — no framework, just the web.</li>
+          <li class="reveal">
+            <strong>Python 3.11</strong>
+            <p>App logic, scoring, and the glue between files and models.</p>
+            <div class="bar"><i data-meter="90"></i></div>
+          </li>
+          <li class="reveal delay-1">
+            <strong>Google Gemini</strong>
+            <p>Resume analysis, interview Q&amp;A, career advice, job match.</p>
+            <div class="bar"><i data-meter="85"></i></div>
+          </li>
+          <li class="reveal delay-2">
+            <strong>Streamlit</strong>
+            <p>Public web UI with pages, themes, and a live Cloud deploy.</p>
+            <div class="bar"><i data-meter="82"></i></div>
+          </li>
+          <li class="reveal">
+            <strong>Document parsing</strong>
+            <p>PDF, DOCX, TXT via PyPDF2 and python-docx.</p>
+            <div class="bar"><i data-meter="80"></i></div>
+          </li>
+          <li class="reveal delay-1">
+            <strong>C</strong>
+            <p>Fundamentals, compilation, and low-level problem solving.</p>
+            <div class="bar"><i data-meter="55"></i></div>
+          </li>
+          <li class="reveal delay-2">
+            <strong>HTML · CSS · JS</strong>
+            <p>This site — no framework, motion and layout by hand.</p>
+            <div class="bar"><i data-meter="78"></i></div>
+          </li>
         </ul>
       </section>
 
       <section id="contact" class="section contact">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="kicker">04 — Contact</p>
           <h2>Let’s build the next tool together.</h2>
         </div>
-        <p class="lede">
-          Open to internships, freelance AI apps, and collaborators who want
-          useful software — not slide decks.
+        <p class="lede reveal">
+          Open to internships, freelance AI apps, and teammates who want software
+          people can click — not a slide deck.
         </p>
-        <div class="hero-actions">
+        <ul class="contact-list reveal delay-1">
+          <li>
+            <span>GitHub</span>
+            <a href="https://github.com/rishabh71206" target="_blank" rel="noopener">github.com/rishabh71206</a>
+          </li>
+          <li>
+            <span>Email</span>
+            <a href="mailto:rishabhsrivastava712008@gmail.com">rishabhsrivastava712008@gmail.com</a>
+          </li>
+          <li>
+            <span>Live app</span>
+            <a href="https://smart-ai-resume-analyzer-nfdlpabrwsiiuvghfphuzv.streamlit.app/" target="_blank" rel="noopener">Resume Analyzer demo</a>
+          </li>
+        </ul>
+        <div class="hero-actions reveal delay-2">
           <a class="btn primary" href="https://github.com/rishabh71206" target="_blank" rel="noopener">Message on GitHub</a>
           <a class="btn ghost" href="mailto:rishabhsrivastava712008@gmail.com">Email me</a>
         </div>
