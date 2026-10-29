@@ -214,7 +214,7 @@
           <li class="reveal delay-1">
             <span>Oct 2026</span>
             <strong>Smart AI Resume Analyzer</strong>
-            <p>Shipped an 8-module career suite with Gemini, document parsing, charts, and a public Streamlit demo.</p>
+            <p>Shipped an 8-module career suite with Gemini, a deterministic offline engine, 36 tests, and a public Streamlit demo.</p>
           </li>
           <li class="reveal delay-2">
             <span>Now</span>
@@ -236,13 +236,15 @@
             <h3>Smart AI Resume Analyzer</h3>
             <p>
               A full career workstation: upload a resume, get an ATS score,
-              talk to an interview bot, compare two CVs, and download a report.
-              Built with Python 3.11, Streamlit, and Google Gemini.
+              match it to a job description, practise with an interview bot,
+              compare two CVs, and download a report. Built with Python 3.12,
+              Streamlit, and Google Gemini.
             </p>
             <ul>
-              <li>Parses PDF, DOCX, and TXT with PyPDF2 and python-docx</li>
-              <li>Gemini for scoring, questions, coaching, and job match</li>
-              <li>Plotly charts and fpdf2 PDF export</li>
+              <li>Parses PDF, DOCX, and TXT with pypdf and python-docx</li>
+              <li>Gemini 2.5 Flash with model fallbacks, plus a deterministic offline engine</li>
+              <li>ATS scoring, job-description matching, mock interviews, and fpdf2 PDF export</li>
+              <li>36 tests, Ruff lint, and CI on Python 3.11 and 3.12</li>
               <li>Dark / light theme on a public Streamlit Cloud app</li>
             </ul>
             <div class="hero-actions">
@@ -279,6 +281,8 @@
                   <span>Gemini</span>
                   <span>Plotly</span>
                   <span>pandas</span>
+                  <span>pypdf</span>
+                  <span>pytest</span>
                 </div>
               </div>
             </div>
@@ -290,10 +294,10 @@
           <article class="reveal delay-1"><h4>Interview Bot</h4><p>Generated questions and evaluation for a mock round you can actually practice.</p></article>
           <article class="reveal delay-2"><h4>Career Advisor</h4><p>Personalized roadmap and skill-gap analysis from the same resume.</p></article>
           <article class="reveal"><h4>AI Chatbot</h4><p>Ask follow-up questions about strengths, gaps, and wording.</p></article>
-          <article class="reveal delay-1"><h4>Job Recommendations</h4><p>Gemini suggests roles that match the parsed profile.</p></article>
+          <article class="reveal delay-1"><h4>Job Recommendations</h4><p>Ranks role tracks against your skills, with or without Gemini.</p></article>
           <article class="reveal delay-2"><h4>Resume Comparison</h4><p>Place two resumes side by side and see who reads stronger.</p></article>
-          <article class="reveal"><h4>Resume Builder</h4><p>Draft a cleaner professional resume with AI assistance.</p></article>
-          <article class="reveal delay-1"><h4>PDF Report</h4><p>Export the analysis so it leaves the browser with you.</p></article>
+          <article class="reveal"><h4>Resume Builder</h4><p>Produces a clean, ATS-friendly Markdown resume ready to export.</p></article>
+          <article class="reveal delay-1"><h4>Tips &amp; Resources</h4><p>Curated resume, LinkedIn, interview, and portfolio checklists.</p></article>
         </div>
 
         <article class="project compact reveal">
@@ -323,7 +327,7 @@
         </div>
         <ul class="skills">
           <li class="reveal">
-            <strong>Python 3.11</strong>
+            <strong>Python 3.12</strong>
             <p>App logic, scoring, and the glue between files and models.</p>
             <div class="bar" role="img" aria-label="Python proficiency: 90 out of 100"><i data-meter="90"></i></div>
           </li>
@@ -339,7 +343,7 @@
           </li>
           <li class="reveal">
             <strong>Document parsing</strong>
-            <p>PDF, DOCX, TXT via PyPDF2 and python-docx.</p>
+            <p>PDF, DOCX, TXT via pypdf and python-docx.</p>
             <div class="bar" role="img" aria-label="Document parsing proficiency: 80 out of 100"><i data-meter="80"></i></div>
           </li>
           <li class="reveal delay-1">

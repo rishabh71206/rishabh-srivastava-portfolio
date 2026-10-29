@@ -15,7 +15,7 @@ Hand-written, dependency-free and fast to load:
 
 ## Featured project
 
-[Smart AI Resume Analyzer](https://github.com/rishabh71206/smart-ai-resume-analyzer) — Python, Streamlit, and Gemini AI.
+[Smart AI Resume Analyzer](https://github.com/rishabh71206/smart-ai-resume-analyzer) — Python 3.12, Streamlit, and Gemini 2.5 Flash, with a deterministic offline engine and 36 tests.
 
 Live demo: [Streamlit app](https://smart-ai-resume-analyzer-nfdlpabrwsiiuvghfphuzv.streamlit.app/)
 
